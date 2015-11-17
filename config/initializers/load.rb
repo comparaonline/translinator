@@ -1,0 +1,1 @@
+CoConfig::Configuration.load(File.join(Translinator::Engine.root, 'config', 'configuration.rb'))

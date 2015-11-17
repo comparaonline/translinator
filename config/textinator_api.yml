@@ -1,0 +1,23 @@
+defaults: &defaults
+  text_url: 'http://192.168.33.1:3000/texts'
+
+development:
+  <<: *defaults
+
+local_development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+qa:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+qc:
+  <<: *defaults
+
+production:
+  <<: *defaults

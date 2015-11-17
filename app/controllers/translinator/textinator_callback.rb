@@ -4,7 +4,7 @@ module Translinator
       @tl = Textinator.get(
         {
           application: Rails.application.class.parent_name.downcase,
-          countryCode: :br,
+          countryCode: I18n.locale,
           url: request.original_fullpath
         }.merge(search)
       )
