@@ -1,4 +1,6 @@
 require 'translinator/textinator'
+require 'translinator/railtie.rb'
+
 module Translinator
   class Engine < ::Rails::Engine
     isolate_namespace Translinator

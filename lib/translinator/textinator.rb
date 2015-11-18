@@ -2,10 +2,9 @@ module Translinator
   class Textinator
     class << self
       def get(params)
-        tries ||= 3
         response = RestClient::Request.execute(
           method: :get,
-          url: 'http://192.168.33.1:3000/texts',
+          url: CoConfig::TEXTINATOR_API[:text_url],
           timeout: 10,
           open_timeout: 10
         )

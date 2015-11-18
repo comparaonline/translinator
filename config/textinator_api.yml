@@ -1,5 +1,6 @@
 defaults: &defaults
-  text_url: 'http://192.168.33.1:3000/texts'
+  text_url: 'http://192.168.33.1:3000/texts.json'
+  request_timeout: 10
 
 development:
   <<: *defaults
