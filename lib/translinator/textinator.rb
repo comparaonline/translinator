@@ -4,8 +4,7 @@ module Translinator
       TIMEOUT = 100
 
       def texts(params)
-        father_path = params[:url]
-        paths = children_path(father_path).inject({}) do |t, path|
+        children_path(params[:url]).inject({}) do |t, path|
           t.merge(get_texts(params.merge(url: path)))
         end
       end
