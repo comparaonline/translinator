@@ -4,7 +4,7 @@ module Translinator
       text = @tl.try(:[], key)
       if text.blank?
         return I18n.t(key, options) if defined?(I18n)
-        return options.try(:[], :default) || ''
+        return options[:default] || ''
       end
       (text % options).html_safe
     end
