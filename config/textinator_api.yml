@@ -1,5 +1,5 @@
 defaults: &defaults
-  text_url: 'http://52.70.90.234:8102/texts.json'
+  text_url: 'http://textinator-sandbox.internal.comparaonline.com:8102/texts.json'
   request_timeout: 10
 
 development:
@@ -22,3 +22,4 @@ qc:
 
 production:
   <<: *defaults
+  text_url: 'http://textinator.internal.comparaonline.com:8002/texts.json'
