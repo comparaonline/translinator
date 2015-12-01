@@ -1,6 +1,6 @@
 defaults: &defaults
   text_url: 'http://textinator-sandbox.internal.comparaonline.com/texts.json'
-  request_timeout: 100
+  request_timeout: 10
 
 development:
   <<: *defaults
