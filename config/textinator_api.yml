@@ -1,6 +1,6 @@
 defaults: &defaults
-  text_url: 'http://textinator-sandbox.internal.comparaonline.com:8102/texts.json'
-  request_timeout: 10
+  text_url: 'http://textinator-sandbox.internal.comparaonline.com:8102/texts/all_by_url.json'
+  request_timeout: 200
 
 development:
   <<: *defaults
@@ -22,4 +22,4 @@ qc:
 
 production:
   <<: *defaults
-  text_url: 'http://textinator.internal.comparaonline.com:8002/texts.json'
+  text_url: 'http://textinator.internal.comparaonline.com:8002/texts/all_by_url.json'
