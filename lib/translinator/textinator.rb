@@ -2,12 +2,13 @@ module Translinator
   class Textinator
     class << self
       def texts(params)
-        resource = RestClient::Resource.new(
-          CoConfig::TEXTINATOR_API[:text_url],
-          timeout: CoConfig::TEXTINATOR_API[:request_timeout],
-          open_timeout: CoConfig::TEXTINATOR_API[:request_timeout]
-        )
-        response = resource.get(params: params)
+        response = {}.t_s
+        Timeout.timeout(CoConfig::TEXTINATOR_API[:request_timeout]) do
+          response = RestClient.get(
+            CoConfig::TEXTINATOR_API[:text_url],
+            params: params
+          )
+        end
         JSON.parse(response).with_indifferent_access
       rescue StandardError => e
         {}
