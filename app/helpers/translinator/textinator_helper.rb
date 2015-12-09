@@ -28,7 +28,7 @@ module Translinator
     end
 
     def handle_error(key, options, exception)
-      Rails.logger.error "Error on fetching key:#{key} with options:#{options.inspect}:"\
+      Rails.logger.error "Textinator error on fetching key:#{key} with options:#{options.inspect}:"\
         + " #{exception.message}\n"\
         + exception.backtrace.join("\n")
     end
