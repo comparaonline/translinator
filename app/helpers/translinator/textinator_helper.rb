@@ -5,7 +5,8 @@ module Translinator
     rescue StandardError => exception
       Text.handle_error(key, options, exception)
     ensure
-      return text || Text.default(options)
+      text ||= Text.default(options)
+      return text.html_safe
     end
   end
 
@@ -14,8 +15,7 @@ module Translinator
 
     def from_textinator(texts, key, options)
       text = texts.try(:[], key)
-      text = (text % options).html_safe if text.present?
-
+      text = text % options if text.present?
       text
     end
 
