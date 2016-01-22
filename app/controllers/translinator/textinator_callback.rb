@@ -1,11 +1,10 @@
 module Translinator
   module TextinatorCallback
-    def translate!(search = {})
-      @tl = Textinator.texts({
-        application: Rails.application.class.parent_name.downcase,
-        countryCode: defined?(I18n) ? I18n.locale : :cl,
-        url: request.original_fullpath
-      }.merge(search)) if Translinator::Config.enabled?
+    def translate!(options = {})
+      return true unless Translinator::Config.enabled?
+
+      @tl = Textinator.texts(request, options[:search] || {})
+      @tl_app_vars = options[:app_vars] || {}
     end
   end
 end
