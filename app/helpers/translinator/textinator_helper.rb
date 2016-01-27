@@ -1,7 +1,7 @@
 module Translinator
   module TextinatorHelper
     def tl(key, options = {})
-      options.merge!(@tl_app_vars.call)
+      options.merge!(@tl_app_vars.call.try(:compact))
       text = Text.from_textinator(@tl, key, options) || Text.from_I18n(key, options)
     rescue StandardError => exception
       Text.handle_error(key, options, exception)
