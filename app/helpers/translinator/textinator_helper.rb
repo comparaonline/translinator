@@ -4,7 +4,7 @@ module Translinator
       options.merge!(@tl_app_vars.call.try(:compact))
       text = Text.from_textinator(@tl, key, options) || Text.from_I18n(key, options)
     rescue StandardError => exception
-      Text.handle_error(key, options, exception)
+      Text.handle_error(key, options, exception, params)
     ensure
       text ||= Text.default(options)
       return text.squish.html_safe
@@ -15,9 +15,13 @@ module Translinator
     module_function
 
     def from_textinator(texts, key, options)
-      text = texts.try(:[], key)
-      text = text % options if text.present?
-      text
+      replace_placeholders(texts.try(:[], key), options)
+    end
+
+    def replace_placeholders(text, options)
+      return false unless text.present?
+      options.each { |k, v| text.gsub!(/%\{#{k.to_s}\}/, v.to_s) }
+      text.gsub(/%\{[^}]+\}/, '')
     end
 
     def from_I18n(key, options)
@@ -28,7 +32,7 @@ module Translinator
       options[:default] || ''
     end
 
-    def handle_error(key, options, exception)
+    def handle_error(key, options, exception, params)
       Rails.logger.error "Textinator error on fetching key: #{key} with options: #{options.inspect} and params #{params.inspect}"\
         + " #{exception.message}\n"\
         + exception.backtrace.join("\n")
