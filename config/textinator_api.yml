@@ -23,4 +23,4 @@ qc:
 production:
   <<: *defaults
   text_url: http://textinator.internal.comparaonline.com:8002/texts/all_by_url.json
-  request_timeout: 0.3
+  request_timeout: 0.6
