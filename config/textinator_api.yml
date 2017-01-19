@@ -1,5 +1,5 @@
 defaults: &defaults
-  text_url: http://textinator-sandbox.internal.comparaonline.com:8102/texts/all_by_url.json
+  text_url: https://services-sandbox.comparaonline.com/textinator/texts/all_by_url.json
   request_timeout: 1
 
 development:
@@ -22,5 +22,5 @@ qc:
 
 production:
   <<: *defaults
-  text_url: http://textinator.internal.comparaonline.com:8002/texts/all_by_url.json
+  text_url: https://services.comparaonline.com/textinator/texts/all_by_url.json
   request_timeout: 0.6
